@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+#posts{
+    float: left;
+    background-color: white;
+    margin-left:-150px;
+    margin-top:30px;
+    padding:30px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius:40px;
+    border-color: black;
+    height: 220px;
+    max-height: 220px;
+    width: 1325px;
+    max-width: 1800px;
+}
+
+body{
+    padding: 5px;
+    font-family: 'helvetica';
+    background-color:white;
+}
+
+h1{
+    color: black;
+}
+
+h2{
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+h4{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+}
+ul{
+    list-style-type: none;
+}
+
+
+</style> 
+
+<h1>Snippets</h1>
+
+<ul>
+{% for post in object_list %}
+
+
+    <li id="posts"><a href="{% url 'article-detail' post.pk %}">
+        
+        <div class="media">
+            {% if post.header_image %}
+            <img src="{{ post.header_image.url }}" class="mr-3" style="max-height: 150px; max-width: 150px;">
+            {% endif %}
+            <div class="media-body">
+              <h5 class="mt-0">{{ post.title }}</h5>
+              <a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a>  -
+        {{ post.author.first_name }}
+        {{ post.author.last_name }} - 
+        {{ post.post_date }}
+            </div>
+          </div>
+       
+        
+        <!--{{ post.title }}</a> -
+        <a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a>  -
+        {{ post.author.first_name }}
+        {{ post.author.last_name }} - 
+        {{ post.post_date }}
+        {{ post.author.email }}-->
+
+        {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
+        - <small><a href="{% url 'update_post' post.pk %}">(Edit)</a>
+        <a href="{% url 'delete_post' post.pk %}">(Delete)</a></small>
+        <br/>
+        {% endif %}
+        {% endif %}
+        
+    {{ post.snippet }}
+</li>
+    
+{% endfor %}
+</ul>
+
+
+
+{% endblock %}
