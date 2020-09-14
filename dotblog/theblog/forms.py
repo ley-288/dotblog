@@ -20,7 +20,7 @@ class PostForm(forms.ModelForm): #allows us to create form fields from our model
             #'author': forms.Select(attrs={'class': 'form-control'}),
             'category': forms.Select(choices=choice_list, attrs={ 'class': 'form-control'}),
             'body': forms.Textarea(attrs={'class': 'form-control'}),
-            'snippet': forms.Textarea(attrs={'class': 'form-control'}),
+            'snippet': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 class EditForm(forms.ModelForm): #edit form instead
@@ -33,7 +33,7 @@ class EditForm(forms.ModelForm): #edit form instead
             'title_tag': forms.TextInput(attrs={'class': 'form-control'}),
             #'author': forms.Select(attrs={'class': 'form-control'}),
             'body': forms.Textarea(attrs={'class': 'form-control'}),
-            'snippet': forms.Textarea(attrs={'class': 'form-control'}),
+            'snippet': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 class CommentForm(forms.ModelForm):

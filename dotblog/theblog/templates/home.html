@@ -4,28 +4,30 @@
 <style>
 #posts{
     float: left;
-    background-color: white;
-    margin-left:-150px;
-    margin-top:30px;
-    padding:30px;
+    background-color: black;
+    color:white;
+    padding: 20px;
+    margin: 1px;
     border-style: solid;
     border-width: 2px;
-    border-radius:40px;
-    border-color: black;
-    height: 220px;
-    max-height: 220px;
-    width: 1325px;
-    max-width: 1800px;
+    border-radius: 10px;
+    border-color: transparent;
+    height: 460px;
+    width: 350px;
+    max-height: 1000px;
 }
 
+
 body{
-    padding: 5px;
+    padding: 0px;
     font-family: 'helvetica';
-    background-color:white;
+    background-color: black;
+    
 }
 
 h1{
-    color: black;
+    color: white;
+    text-align: center;
 }
 
 h2{
@@ -44,19 +46,20 @@ ul{
 }
 
 
+
 </style> 
-
-<h1>Snippets</h1>
-
+<br/>
+<h1>Latest Blogs</h1>
+<br/>
 <ul>
 {% for post in object_list %}
 
 
     <li id="posts"><a href="{% url 'article-detail' post.pk %}">
         
-        <div class="media">
+        <div class=>
             {% if post.header_image %}
-            <img src="{{ post.header_image.url }}" class="mr-3" style="max-height: 150px; max-width: 150px;">
+            <img src="{{ post.header_image.url }}" class="mr-3" style="padding:2px ;max-height: 350px; max-width: 290px; margin-left: 10px;">
             {% endif %}
             <div class="media-body">
               <h5 class="mt-0">{{ post.title }}</h5>
@@ -84,11 +87,18 @@ ul{
         {% endif %}
         
     {{ post.snippet }}
+
 </li>
+
     
 {% endfor %}
 </ul>
 
+
+
+<br/><br/>
+
+<br/>
 
 
 {% endblock %}

@@ -41,7 +41,7 @@ class Post(models.Model):
     #body = models.TextField()
     post_date = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=255, default='coding')
-    snippet = models.CharField(max_length=200) #need a default for existing posts, or django wont work
+    snippet = models.CharField(max_length=50) #need a default for existing posts, or django wont work
     likes = models.ManyToManyField(User, related_name='blog_posts') #many to many is table to table
 
     def total_likes(self):

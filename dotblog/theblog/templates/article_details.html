@@ -3,11 +3,14 @@
 {% block title %} {{ post.title_tag }} {% endblock %}
 
 
+  
+  
+  </style> 
 {% block content %}
 
 <!--current user: {{ user.id }}
 post author: {{ post.author.id }}-->
-
+</br>
 <h1>{{ post.title }} </h1>
 <small>By: 
         {{ post.author.first_name }}
@@ -24,7 +27,7 @@ post author: {{ post.author.id }}-->
 </br>
 
 {% if post.header_image %}
-<img src="{{ post.header_image.url }}" style="float:center; max-height: 1110px; max-width: 1110px;">
+<img src="{{ post.header_image.url }}" style="float:center; max-height: 430px; max-width: 430px;">
 {% endif %}
 
 </br></br>
